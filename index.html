@@ -3,15 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Truuser — Your identity, your control</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Truuser — Your identity, your control | Identidad Digital Soberana</title>
+    <meta
+      name="title"
+      content="Truuser — Your identity, your control | Identidad Digital Soberana"
+    />
     <meta
       name="description"
+      content="Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza. Identidad soberana, verificación descentralizada y privacidad por diseño."
+    />
+    <meta
+      name="keywords"
+      content="identidad digital, identidad soberana, self-sovereign identity, verifiable credentials, DID, eIDAS, privacidad digital, wallet digital, credenciales verificables, Truuser"
+    />
+    <meta name="author" content="Truuser" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.truuser.com/" />
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="es" href="https://www.truuser.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.truuser.com/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://www.truuser.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.truuser.com/" />
+    <meta property="og:title" content="Truuser — Your identity, your control" />
+    <meta
+      property="og:description"
       content="Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza."
     />
+    <meta property="og:image" content="https://www.truuser.com/img/identidad.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:site_name" content="Truuser" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.truuser.com/" />
+    <meta name="twitter:title" content="Truuser — Your identity, your control" />
+    <meta
+      name="twitter:description"
+      content="Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza."
+    />
+    <meta name="twitter:image" content="https://www.truuser.com/img/identidad.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/truuser-logo-only.png" />
+    
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Truuser",
+      "url": "https://www.truuser.com",
+      "logo": "https://www.truuser.com/img/name font.png",
+      "description": "Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza.",
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@truuser.com",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Truuser",
+      "url": "https://www.truuser.com",
+      "description": "Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza.",
+      "inLanguage": ["es", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.truuser.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Truuser",
+      "applicationCategory": "SecurityApplication",
+      "description": "Plataforma de identidad digital soberana que permite verificar, gestionar y compartir credenciales digitales de forma segura y privada.",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "featureList": [
+        "Identidad soberana",
+        "Verificación descentralizada",
+        "Privacidad por diseño",
+        "Interoperabilidad global"
+      ]
+    }
+    </script>
     <style>
       :root {
         --bg: #fafbff; /* Color de fondo general, similar al blanco-azulado */
@@ -143,17 +249,58 @@
       .hero {
         text-align: center;
         padding: 96px 0;
-        background: radial-gradient(
-            1200px 600px at 20% -10%,
-            rgba(255, 210, 130, 0.25),
-            transparent 55%
-          ),
-          radial-gradient(
-            800px 500px at 80% -10%,
-            rgba(255, 181, 76, 0.18),
-            transparent 60%
-          ),
-          linear-gradient(to bottom, var(--card), var(--bg));
+        background-image: url('img/carpet.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(26, 19, 0, 0.4),
+          rgba(26, 19, 0, 0.6)
+        );
+        z-index: 1;
+      }
+      .hero .container {
+        position: relative;
+        z-index: 2;
+      }
+      .hero h1,
+      .hero p,
+      .hero .btn,
+      .hero .badge {
+        position: relative;
+        z-index: 2;
+      }
+      .hero h1 {
+        color: #ffffff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      .hero .sub-hero {
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      }
+      .hero .btn {
+        background: var(--brand);
+        color: var(--text);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      .hero .btn:hover {
+        background: var(--brand-2);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
+      .hero .badge {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
       .section-bg-alt {
         background-color: var(--card);
@@ -407,10 +554,11 @@
           >Casos de uso</a>
         <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
       </nav>
-      <button id="langToggle" class="lang-btn">EN</button>
+      <button id="langToggle" class="lang-btn" aria-label="Toggle language">EN</button>
     </header>
 
-    <section id="vision" class="hero">
+    <main>
+    <section id="vision" class="hero" aria-label="Visión de Truuser">
       <div class="container">
         <h1
           class="lead-hero font-display"
@@ -438,12 +586,6 @@
           Conoce cómo funciona
         </a>
 
-        <div class="content-box">
-          <span class="content-placeholder">
-            <img src="img/carpet.png" alt="Diseña tu identidad online" />
-          </span>
-        </div>
-        
         <div class="badge-row">
           <span class="badge"
             ><img
@@ -461,7 +603,7 @@
       </div>
     </section>
     
-    <section class="section-bg-alt">
+    <section class="section-bg-alt" aria-label="Tu identidad bajo tu control">
       <div class="container">
         <div class="max-w-5xl mx-auto">
           <h2
@@ -489,7 +631,7 @@
       </div>
     </section>
 
-    <section id="how" class="section-bg-flow">
+    <section id="how" class="section-bg-flow" aria-label="Cómo funciona Truuser">
       <div class="container">
         <div class="max-w-6xl mx-auto" style="text-align: center;">
           <h2
@@ -571,7 +713,7 @@
       </div>
     </section>
 
-    <section id="features" class="section-bg-alt">
+    <section id="features" class="section-bg-alt" aria-label="Lo que hace único a Truuser">
       <div class="container">
         <div class="max-w-6xl mx-auto" style="text-align: center;">
           <h2
@@ -660,7 +802,7 @@
       </div>
     </section>
 
-    <section id="usecases" class="section-bg-flow">
+    <section id="usecases" class="section-bg-flow" aria-label="Casos de uso de Truuser">
       <div class="container">
         <div class="max-w-6xl mx-auto" style="text-align: center;">
           <h2
@@ -729,7 +871,7 @@
       </div>
     </section>
 
-    <section id="contact" class="cta-section">
+    <section id="contact" class="cta-section" aria-label="Contacto">
       <div class="container">
         <h2
           class="font-display"
@@ -755,6 +897,7 @@
         </a>
       </div>
     </section>
+    </main>
 
     <footer>
       <div
