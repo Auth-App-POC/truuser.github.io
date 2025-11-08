@@ -210,6 +210,21 @@
           height: 100%;
       }
       
+      .card-image-wrap { /* Contenedor para imágenes de 1:1 en las tarjetas */
+        width: 100%;
+        height: 180px; /* Tamaño fijo para que se vea bien en el card */
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .card-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
       /* FIN ESTILOS DE IMAGEN ACTUALIZADOS */
 
       /* Cómo funciona */
@@ -250,6 +265,87 @@
       .card p {
         color: var(--muted);
         margin: 0;
+      }
+
+      /* Features / Diferenciadores */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      @media (min-width: 768px) {
+        .grid-2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .feature-card {
+        background: rgba(255, 181, 76, 0.1);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: var(--shadow);
+        text-align: left;
+        transition: background 0.2s, box-shadow 0.2s;
+      }
+      .feature-card:hover {
+        background: rgba(255, 181, 76, 0.15);
+        box-shadow: 0 15px 40px rgba(16, 24, 40, 0.08);
+      }
+      .feature-card h3 {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 0 0 12px;
+        color: var(--text);
+      }
+      .feature-card p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      /* Casos de uso */
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      @media (min-width: 640px) {
+        .grid-4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .grid-4 {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      .usecase-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: box-shadow 0.2s;
+      }
+      .usecase-card:hover {
+        box-shadow: 0 15px 40px rgba(16, 24, 40, 0.08);
+      }
+      .usecase-card .usecase-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+      .usecase-card h3 {
+        font-weight: 600;
+        font-size: 18px;
+        margin: 0 0 8px;
+        color: var(--text);
+      }
+      .usecase-card p {
+        color: var(--muted);
+        margin: 0;
+        font-size: 14px;
       }
 
       /* CTA */
@@ -293,12 +389,14 @@
   <body>
     <header class="nav">
       <div class="nav-logo-wrap">
-        <img
-          src="img/name font.png"
-          alt="Truuser U"
-          class="logo-u"
-          style="color: var(--brand-2)"
-        />
+        <a href="https://www.truuser.com" style="text-decoration: none;">
+          <img
+            src="img/name font.png"
+            alt="Truuser U"
+            class="logo-u"
+            style="color: var(--brand-2)"
+          />
+        </a>
       </div>
       <nav class="nav-links">
         <a href="#vision" data-es="Visión" data-en="Vision">Visión</a>
@@ -316,10 +414,10 @@
       <div class="container">
         <h1
           class="lead-hero font-display"
-          data-es="La identidad digital no debería ser un riesgo."
-          data-en="Digital identity shouldn’t be a risk."
+          data-es="La identidad digital no debería ser un riesgo"
+          data-en="Digital identity shouldn’t be a risk"
         >
-          La identidad digital no debería ser un riesgo.
+          La identidad digital no debería ser un riesgo
         </h1>
         <p
           class="sub-hero"
@@ -383,12 +481,8 @@
             Transparente, interoperable y centrado en ti.
           </p>
           <div class="content-box" style="background-color: #f7f7f7">
-            <span
-              class="content-placeholder"
-              data-es="[Imagen conceptual: wallet de identidad soberana]"
-              data-en="[Conceptual image: self-sovereign identity wallet]"
-            >
-              [Imagen conceptual: wallet de identidad soberana]
+            <span class="content-placeholder">
+              <img src="img/identidad.png" alt="Wallet de identidad soberana" />
             </span>
           </div>
         </div>
@@ -397,9 +491,10 @@
 
     <section id="how" class="section-bg-flow">
       <div class="container">
-        <div class="max-w-6xl mx-auto text-center">
+        <div class="max-w-6xl mx-auto" style="text-align: center;">
           <h2
-            class="text-3xl font-display font-bold text-gray-900 mb-8"
+            class="text-3xl font-display font-bold text-gray-900 mb-8 text-center"
+            style="text-align: center;"
             data-es="Cómo funciona Truuser"
             data-en="How Truuser works"
           >
@@ -414,8 +509,17 @@
             verifican y utilizan identidades digitales, en tres pasos claros:
           </p>
 
+          <div class="content-box" style="height: 500px; margin-top: 32px; margin-bottom: 48px">
+            <span class="content-placeholder">
+              <img src="img/cycle.jpg" alt="Flujo circular Verifica → Controla → Comparte" style="object-fit: contain;" />
+            </span>
+          </div>
+
           <div class="grid-3">
             <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/lift.png" alt="Verificación de identidad" />
+              </div>
               <div class="card-step">①</div>
               <h3 class="card-title" data-es="Verifica" data-en="Verify">
                 Verifica
@@ -430,6 +534,9 @@
             </div>
 
             <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/cinema.png" alt="Control de credenciales" />
+              </div>
               <div class="card-step">②</div>
               <h3 class="card-title" data-es="Controla" data-en="Control">
                 Controla
@@ -444,6 +551,9 @@
             </div>
 
             <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/houses.png" alt="Compartir información" />
+              </div>
               <div class="card-step">③</div>
               <h3 class="card-title" data-es="Comparte" data-en="Share">
                 Comparte
@@ -457,15 +567,163 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="content-box" style="height: 320px; margin-top: 64px">
-            <span
-              class="content-placeholder"
-              data-es="[Imagen conceptual: flujo circular Verifica → Controla → Comparte]"
-              data-en="[Conceptual image: circular flow Verify → Control → Share]"
-            >
-              [Imagen conceptual: flujo circular Verifica → Controla → Comparte]
-            </span>
+    <section id="features" class="section-bg-alt">
+      <div class="container">
+        <div class="max-w-6xl mx-auto" style="text-align: center;">
+          <h2
+            class="text-3xl font-display font-bold text-gray-900 mb-8"
+            style="text-align: center;"
+            data-es="Lo que hace único a Truuser"
+            data-en="What makes Truuser unique"
+          >
+            Lo que hace único a Truuser
+          </h2>
+          <p
+            class="sub-hero mb-14"
+            data-es="No es solo tecnología: es una nueva forma de entender la identidad digital. Construida sobre principios de soberanía, confianza y usabilidad."
+            data-en="It's not just technology: it's a new way of understanding digital identity. Built on principles of sovereignty, trust, and usability."
+          >
+            No es solo tecnología: es una nueva forma de entender la identidad digital.
+            Construida sobre principios de soberanía, confianza y usabilidad.
+          </p>
+
+          <div class="grid-2">
+            <div class="feature-card">
+              <h3
+                data-es="Identidad soberana"
+                data-en="Self-sovereign identity"
+              >
+                Identidad soberana
+              </h3>
+              <p
+                data-es="Tus datos son tuyos. Truuser te permite gestionar y revocar accesos sin depender de terceros."
+                data-en="Your data is yours. Truuser allows you to manage and revoke access without depending on third parties."
+              >
+                Tus datos son tuyos. Truuser te permite gestionar y revocar accesos sin
+                depender de terceros.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3
+                data-es="Verificación descentralizada"
+                data-en="Decentralized verification"
+              >
+                Verificación descentralizada
+              </h3>
+              <p
+                data-es="Credenciales verificadas por una red de confianza. Sin duplicaciones ni procesos redundantes."
+                data-en="Credentials verified by a trust network. No duplications or redundant processes."
+              >
+                Credenciales verificadas por una red de confianza. Sin duplicaciones ni
+                procesos redundantes.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3
+                data-es="Privacidad por diseño"
+                data-en="Privacy by design"
+              >
+                Privacidad por diseño
+              </h3>
+              <p
+                data-es="Comparte lo justo. Truuser aplica principios de privacidad selectiva y cifrado extremo a extremo."
+                data-en="Share only what's necessary. Truuser applies principles of selective privacy and end-to-end encryption."
+              >
+                Comparte lo justo. Truuser aplica principios de privacidad selectiva y
+                cifrado extremo a extremo.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3
+                data-es="Interoperabilidad global"
+                data-en="Global interoperability"
+              >
+                Interoperabilidad global
+              </h3>
+              <p
+                data-es="Cumple con los principales estándares (DID, Verifiable Credentials, eIDAS). Preparada para integrarse en cualquier ecosistema."
+                data-en="Complies with major standards (DID, Verifiable Credentials, eIDAS). Ready to integrate into any ecosystem."
+              >
+                Cumple con los principales estándares (DID, Verifiable Credentials,
+                eIDAS). Preparada para integrarse en cualquier ecosistema.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="usecases" class="section-bg-flow">
+      <div class="container">
+        <div class="max-w-6xl mx-auto" style="text-align: center;">
+          <h2
+            class="text-3xl font-display font-bold text-gray-900 mb-10"
+            style="text-align: center;"
+            data-es="Casos de uso"
+            data-en="Use cases"
+          >
+            Casos de uso
+          </h2>
+          <p
+            class="sub-hero mb-12"
+            data-es="Desde fintech hasta instituciones públicas, Truuser impulsa una nueva forma de confianza digital."
+            data-en="From fintech to public institutions, Truuser drives a new form of digital trust."
+          >
+            Desde fintech hasta instituciones públicas, Truuser impulsa una nueva forma
+            de confianza digital.
+          </p>
+
+          <div class="grid-4">
+            <div class="usecase-card">
+              <div class="usecase-icon">💳</div>
+              <h3 data-es="Fintech" data-en="Fintech">Fintech</h3>
+              <p
+                data-es="Onboarding seguro y sin fricciones."
+                data-en="Secure and frictionless onboarding."
+              >
+                Onboarding seguro y sin fricciones.
+              </p>
+            </div>
+
+            <div class="usecase-card">
+              <div class="usecase-icon">🎓</div>
+              <h3 data-es="Educación" data-en="Education">Educación</h3>
+              <p
+                data-es="Certificados académicos verificables."
+                data-en="Verifiable academic certificates."
+              >
+                Certificados académicos verificables.
+              </p>
+            </div>
+
+            <div class="usecase-card">
+              <div class="usecase-icon">🏛️</div>
+              <h3 data-es="Gobierno" data-en="Government">Gobierno</h3>
+              <p
+                data-es="Identidad ciudadana digital, segura y privada."
+                data-en="Digital citizen identity, secure and private."
+              >
+                Identidad ciudadana digital, segura y privada.
+              </p>
+            </div>
+
+            <div class="usecase-card">
+              <div class="usecase-icon">🏢</div>
+              <h3 data-es="Empresas" data-en="Business">Empresas</h3>
+              <p
+                data-es="Confianza instantánea entre empleados y partners."
+                data-en="Instant trust between employees and partners."
+              >
+                Confianza instantánea entre empleados y partners.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -489,6 +747,7 @@
         <a
           href="#"
           class="btn cta-btn"
+          id="contactEmail"
           data-es="Hablar con el equipo"
           data-en="Talk to the team"
         >
@@ -522,6 +781,18 @@
           }
         });
       });
+
+      // Protección anti-spam para el email
+      const contactEmail = document.getElementById("contactEmail");
+      if (contactEmail) {
+        contactEmail.addEventListener("click", function(e) {
+          e.preventDefault();
+          const user = "info";
+          const domain = "truuser.com";
+          const email = user + "@" + domain;
+          window.location.href = "mailto:" + email;
+        });
+      }
     </script>
   </body>
 </html>
