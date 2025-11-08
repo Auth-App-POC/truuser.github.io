@@ -183,34 +183,46 @@
         margin: 0 auto 30px; 
       }
       
-      /* ESTILOS DE IMAGEN ACTUALIZADOS */
+      /* ESTILOS DE IMAGEN */
       .content-box {
         width: 100%;
         max-width: 800px;
-        height: 288px;
-        background-color: transparent; /* Fondo transparente para que se vea solo la imagen */
+        height: 288px; /* Altura original para la imagen grande */
+        background-color: transparent; 
         border-radius: 16px;
-        overflow: hidden; /* Recorta la imagen si sobresale */
+        overflow: hidden; 
         margin: 64px auto 0;
         border: 1px solid #ffb54c55;
-        /* No necesitamos display: flex; align-items: center; justify-content: center; */
       }
       
       .content-box img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* CLAVE: La imagen cubre todo el contenedor */
+        object-fit: cover; 
         display: block;
       }
       
-      /* El placeholder puede simplificarse o eliminarse, pero lo mantendremos como bloque contenedor */
       .content-placeholder {
           display: block;
           width: 100%;
           height: 100%;
       }
       
-      /* FIN ESTILOS DE IMAGEN ACTUALIZADOS */
+      .card-image-wrap { /* Contenedor para imágenes de 1:1 en las tarjetas */
+        width: 100%;
+        height: 180px; /* Tamaño fijo para que se vea bien en el card */
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .card-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* FIN ESTILOS DE IMAGEN */
 
       /* Cómo funciona */
       .grid-3 {
@@ -416,6 +428,9 @@
 
           <div class="grid-3">
             <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/lift.png" alt="Verificación de identidad" />
+              </div>
               <div class="card-step">①</div>
               <h3 class="card-title" data-es="Verifica" data-en="Verify">
                 Verifica
@@ -430,6 +445,9 @@
             </div>
 
             <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/cinema.png" alt="Control de credenciales" />
+              </div>
               <div class="card-step">②</div>
               <h3 class="card-title" data-es="Controla" data-en="Control">
                 Controla
@@ -444,6 +462,9 @@
             </div>
 
             <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/houses.png" alt="Compartir información" />
+              </div>
               <div class="card-step">③</div>
               <h3 class="card-title" data-es="Comparte" data-en="Share">
                 Comparte
