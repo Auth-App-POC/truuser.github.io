@@ -1,184 +1,941 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Truuser — Identidad verificada, privacidad bajo control</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Truuser — Your identity, your control | Identidad Digital Soberana</title>
+    <meta
+      name="title"
+      content="Truuser — Your identity, your control | Identidad Digital Soberana"
+    />
+    <meta
+      name="description"
+      content="Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza. Identidad soberana, verificación descentralizada y privacidad por diseño."
+    />
+    <meta
+      name="keywords"
+      content="identidad digital, identidad soberana, self-sovereign identity, verifiable credentials, DID, eIDAS, privacidad digital, wallet digital, credenciales verificables, Truuser"
+    />
+    <meta name="author" content="Truuser" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://www.truuser.com/" />
-    <meta name="description" content="Truuser: verificación única y login por atributos para verificar edad/identidad sin custodiar documentos. B2B: API/SDK, OIDC y SLAs." />
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="es" href="https://www.truuser.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.truuser.com/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://www.truuser.com/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.truuser.com/" />
+    <meta property="og:title" content="Truuser — Your identity, your control" />
+    <meta
+      property="og:description"
+      content="Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza."
+    />
+    <meta property="og:image" content="https://www.truuser.com/img/identidad.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:site_name" content="Truuser" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.truuser.com/" />
+    <meta name="twitter:title" content="Truuser — Your identity, your control" />
+    <meta
+      name="twitter:description"
+      content="Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza."
+    />
+    <meta name="twitter:image" content="https://www.truuser.com/img/identidad.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/truuser-logo-only.png" />
+    
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Truuser",
+      "url": "https://www.truuser.com",
+      "logo": "https://www.truuser.com/img/name font.png",
+      "description": "Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza.",
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@truuser.com",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Truuser",
+      "url": "https://www.truuser.com",
+      "description": "Truuser devuelve el control de la identidad digital a las personas y organizaciones. Verifica, gestiona y comparte tus credenciales con confianza.",
+      "inLanguage": ["es", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.truuser.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Truuser",
+      "applicationCategory": "SecurityApplication",
+      "description": "Plataforma de identidad digital soberana que permite verificar, gestionar y compartir credenciales digitales de forma segura y privada.",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "featureList": [
+        "Identidad soberana",
+        "Verificación descentralizada",
+        "Privacidad por diseño",
+        "Interoperabilidad global"
+      ]
+    }
+    </script>
     <style>
-        :root{
-            --bg:#ffffff;
-            --card:#ffffff;
-            --text:#000000;
-            --muted:#657087;
-            --brand:#ffb54c;
-            --brand-2:#ffa43a;
-            --border:#e9edef;
-            --shadow:0 10px 35px rgba(16,24,40,.06);
+      :root {
+        --bg: #fafbff; /* Color de fondo general, similar al blanco-azulado */
+        --card: #ffffff;
+        --text: #1a1300; /* Texto oscuro, similar al negro */
+        --muted: #657087; /* Texto gris/apagado */
+        --brand: #ffb54c; /* Naranja/Ámbar principal */
+        --brand-2: #ffa43a; /* Naranja/Ámbar secundario para gradientes */
+        --border: #e9edef;
+        --shadow: 0 10px 35px rgba(16, 24, 40, 0.06);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        line-height: 1.55;
+      }
+      h1,
+      h2,
+      h3,
+      .font-display {
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--text);
+        font-weight: 700;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--brand-2);
+      }
+
+      /* Navbar */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 24px;
+        background-color: var(--card);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .nav-logo-wrap {
+        display: flex;
+        align-items: center;
+      }
+      .logo-u {
+        height: 28px;
+        opacity: 0.9;
+      }
+      .nav-links {
+        display: none;
+        gap: 24px;
+        font-weight: 600;
+      }
+      @media (min-width: 768px) {
+        .nav-links {
+          display: flex;
         }
-        *{box-sizing:border-box}
-        html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
-        a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
-        .container{max-width:1120px;margin:0 auto;padding:24px}
-        header.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-        header .left{display:flex;gap:12px;align-items:center}
-        .logo-name{height:28px}
-        .logo-u{height:80px;opacity:.9}
-        .logo-o{height:30px;opacity:.9}
-        .cta{display:flex;gap:10px;align-items:center}
-        .btn{background:#fff;border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:12px;font-weight:600;box-shadow:var(--shadow)}
-        .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#1a1300;border:none}
-        .btn.ghost{background:#fff;border:1px solid var(--border)}
-        .hero-wrap{position:relative;isolation:isolate;background:
-            radial-gradient(1200px 600px at 20% -10%, rgba(255,210,130,.25), transparent 55%),
-            radial-gradient(800px 500px at 80% -10%, rgba(255,181,76,.18), transparent 60%);
+      }
+      .lang-btn {
+        background-color: #f3f4f6;
+        border-radius: 9999px;
+        padding: 0.4rem 0.8rem;
+        font-weight: 600;
+        transition: background 0.2s;
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+      .lang-btn:hover {
+        background-color: #ffe8cc; /* Color claro basado en el brand */
+      }
+
+      /* Botones */
+      .btn {
+        background: var(--brand);
+        color: var(--text);
+        padding: 12px 32px;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: background 0.2s, box-shadow 0.2s;
+        box-shadow: var(--shadow);
+      }
+      .btn:hover {
+        background: var(--brand-2);
+        text-decoration: none;
+      }
+
+      /* Badge */
+      .badge-row {
+        margin-top: 16px; /* Espacio debajo del botón */
+        text-align: center;
+      }
+      .badge {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: #3b465a;
+        font-weight: 600;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 14px;
+        box-shadow: var(--shadow);
+      }
+      .badge img {
+        height: 14px;
+        opacity: 0.9;
+      }
+      .badge .logo-o {
+        height: 20px;
+      }
+
+      /* Hero/Secciones */
+      .hero {
+        text-align: center;
+        padding: 96px 0;
+        background-image: url('img/carpet.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(26, 19, 0, 0.4),
+          rgba(26, 19, 0, 0.6)
+        );
+        z-index: 1;
+      }
+      .hero .container {
+        position: relative;
+        z-index: 2;
+      }
+      .hero h1,
+      .hero p,
+      .hero .btn,
+      .hero .badge {
+        position: relative;
+        z-index: 2;
+      }
+      .hero h1 {
+        color: #ffffff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      .hero .sub-hero {
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      }
+      .hero .btn {
+        background: var(--brand);
+        color: var(--text);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      .hero .btn:hover {
+        background: var(--brand-2);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      }
+      .hero .badge {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+      .section-bg-alt {
+        background-color: var(--card);
+        padding: 96px 0;
+        text-align: center;
+      }
+      .section-bg-flow {
+        padding: 96px 0;
+        background: linear-gradient(to bottom, var(--bg), var(--card));
+      }
+
+      /* Títulos y texto */
+      .lead-hero {
+        font-size: 48px;
+        line-height: 1.1;
+        margin-bottom: 24px;
+      }
+      @media (min-width: 768px) {
+        .lead-hero {
+          font-size: 60px;
         }
-        .hero-media{max-width:1200px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border)}
-        .hero-media .frame{position:relative;width:100%;aspect-ratio:8/5}
-        .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-        .u-overlay{position:absolute;inset:auto 24px 24px auto;background:rgba(0,0,0,.45);color:#fff;padding:10px 12px;border-radius:12px;font-weight:600}
-        .badge{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--border);color:#3b465a;font-weight:600;padding:6px 10px;border-radius:999px;font-size:12px;box-shadow:var(--shadow)}
-        .lead{font-size:40px;letter-spacing:-.02em;margin:18px 0 6px}
-        .sub{color:var(--muted);max-width:780px}
-        .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-        .pill{background:#F3AA35;color:#000000;border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px;box-shadow:var(--shadow)}
-        .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-        .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
-        .card h3{margin:12px 0 6px}
-        .card p{color:var(--muted);margin:0}
-        .square{position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#f9fafb}
-        .square img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-        .cols{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-top:36px}
-        .panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
-        .list{display:grid;gap:10px;margin:10px 0 0}
-        .list div{display:flex;align-items:flex-start;gap:10px}
-        .tick{color:#18a957;margin-right:8px}
-        .kpis{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
-        .kpis .k{background:#fff;border:1px solid var(--border);padding:10px 12px;border-radius:12px;font-size:13px;color:var(--muted)}
-        .logos{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:14px;opacity:.9}
-        footer{margin-top:48px;border-top:1px solid var(--border)}
-        .foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding:18px 0;color:var(--muted);font-size:14px}
-        @media (max-width:980px){
-            .grid-3{grid-template-columns:1fr}
-            .cols{grid-template-columns:1fr;gap:14px}
-            .lead{font-size:32px}
+      }
+      .sub-hero {
+        font-size: 18px;
+        color: var(--muted);
+        max-width: 780px;
+        margin: 0 auto 30px; 
+      }
+      
+      /* ESTILOS DE IMAGEN ACTUALIZADOS */
+      .content-box {
+        width: 100%;
+        max-width: 800px;
+        height: 288px;
+        background-color: transparent; /* Fondo transparente para que se vea solo la imagen */
+        border-radius: 16px;
+        overflow: hidden; /* Recorta la imagen si sobresale */
+        margin: 64px auto 0;
+        border: 1px solid #ffb54c55;
+        /* No necesitamos display: flex; align-items: center; justify-content: center; */
+      }
+      
+      .content-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* CLAVE: La imagen cubre todo el contenedor */
+        display: block;
+      }
+      
+      /* El placeholder puede simplificarse o eliminarse, pero lo mantendremos como bloque contenedor */
+      .content-placeholder {
+          display: block;
+          width: 100%;
+          height: 100%;
+      }
+      
+      .card-image-wrap { /* Contenedor para imágenes de 1:1 en las tarjetas */
+        width: 100%;
+        height: 180px; /* Tamaño fijo para que se vea bien en el card */
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .card-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      /* FIN ESTILOS DE IMAGEN ACTUALIZADOS */
+
+      /* Cómo funciona */
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      @media (min-width: 768px) {
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
         }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        text-align: left;
+        transition: box-shadow 0.2s;
+      }
+      .card:hover {
+        box-shadow: 0 15px 40px rgba(16, 24, 40, 0.08);
+      }
+      .card-step {
+        font-size: 32px;
+        margin-bottom: 12px;
+        color: var(--brand-2);
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 18px;
+        margin: 0 0 8px;
+        color: var(--text);
+      }
+      .card p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      /* Features / Diferenciadores */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      @media (min-width: 768px) {
+        .grid-2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .feature-card {
+        background: rgba(255, 181, 76, 0.1);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: var(--shadow);
+        text-align: left;
+        transition: background 0.2s, box-shadow 0.2s;
+      }
+      .feature-card:hover {
+        background: rgba(255, 181, 76, 0.15);
+        box-shadow: 0 15px 40px rgba(16, 24, 40, 0.08);
+      }
+      .feature-card h3 {
+        font-weight: 600;
+        font-size: 20px;
+        margin: 0 0 12px;
+        color: var(--text);
+      }
+      .feature-card p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      /* Casos de uso */
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      @media (min-width: 640px) {
+        .grid-4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .grid-4 {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      .usecase-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: box-shadow 0.2s;
+      }
+      .usecase-card:hover {
+        box-shadow: 0 15px 40px rgba(16, 24, 40, 0.08);
+      }
+      .usecase-card .usecase-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+      .usecase-card h3 {
+        font-weight: 600;
+        font-size: 18px;
+        margin: 0 0 8px;
+        color: var(--text);
+      }
+      .usecase-card p {
+        color: var(--muted);
+        margin: 0;
+        font-size: 14px;
+      }
+
+      /* CTA */
+      .cta-section {
+        text-align: center;
+        padding: 96px 0;
+        background-color: var(--brand-2);
+        color: var(--text);
+      }
+      .cta-section h2 {
+        color: var(--text);
+        font-size: 36px;
+        margin-bottom: 16px;
+      }
+      .cta-section p {
+        font-size: 18px;
+        color: #1a1300cc;
+        margin-bottom: 32px;
+      }
+      .cta-btn {
+        background: var(--card);
+        color: var(--brand-2);
+        border: none;
+      }
+      .cta-btn:hover {
+        background: #fdf5e7;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 24px 0;
+        color: var(--muted);
+        font-size: 14px;
+        background-color: var(--card);
+        border-top: 1px solid var(--border);
+      }
     </style>
-</head>
-<body>
-    <div class="hero-wrap">
-        <div class="container">
-            <header class="nav">
-                <div class="left">
-                    <img src="img/name font.png" alt="Truuser U" class="logo-u" />
-                </div>
-                <div class="cta">
-                    <a class="btn ghost" href="#docs">Docs API</a>
-                    <a class="btn primary" href="mailto:info@truuser.com?subject=Demo%20Tecnica%20Truuser">Agendar demo</a>
-                </div>
-            </header>
+  </head>
 
-            <!-- Imagen de portada -->
-            <div class="hero-media">
-                <div class="frame">
-                    <img src="img/carpet.png" alt="Diseña tu identidad online" />
-                    <div class="u-overlay">Diseña tu identidad online</div>
-                </div>
-            </div>
-            <div style="margin-top:22px">
-				<span class="badge"><img src="img/truuser-logo-only.png" alt="U" style="height:14px"> <img src="img/name font.png" alt="Truuser U" class="logo-o" />Privacidad, confianza y escalabilidad</span>
-            </div>
-			
-			<!-- Hero text -->
-            <div style="margin-top:22px">
-                <h1 class="lead">La forma simple de gestionar y verificar identidad. <br> Sin complicaciones, sin documentos.</h1>
-                <p class="sub">Verificación única (biometría con prueba de vida + id) y login por <b>atributos</b> (“>18”, “reside en UE”, “documento validado”). Integra con OIDC/SSO, REST o SDK; recibes solo lo necesario. SLAs por volumen.</p>
-                <div class="pill-row">
-                    <span class="pill"><b>Menos fraude y bots</b></span>
-                    <span class="pill"><b>Conversión sin fricción</b></span>
-                    <span class="pill"><b>GDPR / eIDAS 2.0 ready</b></span>
-                    <span class="pill"><b>Express verify para cuentas existentes</b></span>
-                </div>
-            </div>
+  <body>
+    <header class="nav">
+      <div class="nav-logo-wrap">
+        <a href="https://www.truuser.com" style="text-decoration: none;">
+          <img
+            src="img/name font.png"
+            alt="Truuser U"
+            class="logo-u"
+            style="color: var(--brand-2)"
+          />
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="#vision" data-es="Visión" data-en="Vision">Visión</a>
+        <a href="#how" data-es="Cómo funciona" data-en="How it works">Cómo funciona</a>
+        <a href="#features" data-es="Por qué Truuser" data-en="Why Truuser"
+          >Por qué Truuser</a>
+        <a href="#usecases" data-es="Casos de uso" data-en="Use cases"
+          >Casos de uso</a>
+        <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
+      </nav>
+      <button id="langToggle" class="lang-btn" aria-label="Toggle language">EN</button>
+    </header>
 
-            <!-- Tres pasos -->
-            <section class="grid-3" style="margin-top:22px">
-                <article class="card">
-                    <div class="square">
-                        <img src="img/lift.png" alt="onboarding" />
-                    </div>
-                    <h3>1. Onboarding</h3>
-                    <p>Documento oficial + selfie con liveness (IA + revisión humana cuando aplique). <b>Una vez y listo.</b></p>
-                </article>
-                <article class="card">
-                    <div class="square">
-                        <img src="img/cinema.png" alt="identidades y atributos" />
-                    </div>
-                    <h3>2. Gestor de identidades</h3>
-                    <p>Maneja identidades por contexto (profesional, anónima, +18). <b>Control granular</b> de qué se comparte en cada plataforma.</p>
-                </article>
-                <article class="card">
-                    <div class="square">
-                        <img src="img/houses.png" alt="integración" />
-                    </div>
-                    <h3>3. Integración</h3>
-                    <p>OIDC/SSO, REST y SDK. “Login con Truuser” o <b>verificación por atributos</b> en flujos existentes.</p>
-                </article>
-            </section>
+    <main>
+    <section id="vision" class="hero" aria-label="Visión de Truuser">
+      <div class="container">
+        <h1
+          class="lead-hero font-display"
+          data-es="La identidad digital no debería ser un riesgo"
+          data-en="Digital identity shouldn’t be a risk"
+        >
+          La identidad digital no debería ser un riesgo
+        </h1>
+        <p
+          class="sub-hero"
+          data-es="Hoy, nuestras identidades están repartidas entre plataformas, servicios y bases de datos. Truuser nace para devolver el control, la privacidad y la confianza a las personas."
+          data-en="Today, our identities are scattered across platforms, services, and databases. Truuser was born to return control, privacy, and trust to people."
+        >
+          Hoy, nuestras identidades están repartidas entre plataformas, servicios
+          y bases de datos. Truuser nace para devolver el control, la privacidad
+          y la confianza a las personas.
+        </p>
 
-            <!-- Beneficios -->
-            <section class="cols">
-                <div class="panel">
-                    <h3>Beneficios para plataformas</h3>
-                    <div class="list">
-                        <div><span class="tick">✔</span><span>Verificanción de edad/identidad sin custodiar documentos.</span></div>
-                        <div><span class="tick">✔</span><span>Reduce fraude, soporte y cuentas desechables. Mejora conversión.</span></div>
-                        <div><span class="tick">✔</span><span>SLAs por volumen y time-to-value en semanas.</span></div>
-                    </div>
-                    <div class="kpis">
-                        <div class="k">Atributos: >18, residencia UE, documento válido, persona real</div>
-                        <div class="k">Flujos: SSO/OIDC, Web/Mobile SDK</div>
-                        <div class="k">Ecosistema: KYC/biometría plug-and-play</div>
-                    </div>
-                </div>
-                <div class="panel" id="docs">
-                    <h3>Cómo funciona</h3>
-                    <ol class="list" style="gap:12px">
-                        <li><b>Onboarding</b>: documento + selfie con liveness.</li>
-                        <li><b>Gestor</b>: el usuario elige identidad y atributos a compartir.</li>
-                        <li><b>Token</b>: tu app recibe solo lo necesario, firmado y auditable.</li>
-                    </ol>
-                    <div class="logos">
-                        <img src="img/name font.png" alt="Truuser" style="height:46px">
-                        <img src="img/motto.png" alt="Brand shapes" style="height:46px;opacity:.8">
-                    </div>
-                </div>
-            </section>
+        <a
+          href="#how"
+          class="btn"
+          data-es="Conoce cómo funciona"
+          data-en="Learn how it works"
+        >
+          Conoce cómo funciona
+        </a>
 
-            <!-- CTA -->
-            <section class="panel" style="margin-top:16px">
-                <h3>Para partners (B2B)</h3>
-                <div class="list">
-                    <div><span class="tick">✔</span><span><b>SaaS/VaaS</b>: tarifa base + precio por verificación/atributo. Endpoints de atributos y SLAs.</span></div>
-                    <div><span class="tick">✔</span><span><b>Privacidad por diseño</b>: minimización de datos (GDPR, eIDAS 2.0).</span></div>
-                    <div><span class="tick">✔</span><span><b>Ventaja</b>: multi-identidades reales por persona, reputación portable y antifraude multi-cuenta.</span></div>
-                </div>
-                <div id="demo" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-                    <a class="btn primary" href="mailto:info@truuser.com?subject=Demo%20Tecnica%20Truuser">Agendar demo técnica</a>
-                    <a class="btn ghost" href="https://truuser.vercel.app/">Probar sandbox</a>
-                </div>
-            </section>
-
-            <footer>
-                <div class="foot">
-                    <div>© 2025 Truuser</div>
-                    <div style="display:flex;gap:12px;align-items:center">
-                        <a href="#">TOS</a><span>·</span><a href="#">Privacidad</a><span>·</span><a href="mailto:info@truuser.com">Contacto</a>
-                    </div>
-                </div>
-            </footer>
+        <div class="badge-row">
+          <span class="badge"
+            ><img
+              src="img/truuser-logo-only.png"
+              alt="U"
+              style="height: 14px"
+            />
+            <img
+              src="img/name font.png"
+              alt="Truuser U"
+              class="logo-o"
+            />Privacidad, confianza y escalabilidad</span
+          >
         </div>
-    </div>
-</body>
+      </div>
+    </section>
+    
+    <section class="section-bg-alt" aria-label="Tu identidad bajo tu control">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2
+            class="text-3xl font-display font-bold text-gray-900 mb-6"
+            data-es="Tu identidad. Bajo tu control."
+            data-en="Your identity. Under your control."
+          >
+            Tu identidad. Bajo tu control.
+          </h2>
+          <p
+            class="sub-hero"
+            data-es="Truuser redefine la gestión de identidades digitales verificadas. Verifica una vez, controla siempre y comparte solo lo necesario. Transparente, interoperable y centrado en ti."
+            data-en="Truuser redefines the management of verified digital identities. Verify once, stay in control, and share only what’s necessary. Transparent, interoperable, and user-centric."
+          >
+            Truuser redefine la gestión de identidades digitales verificadas.
+            Verifica una vez, controla siempre y comparte solo lo necesario.
+            Transparente, interoperable y centrado en ti.
+          </p>
+          <div class="content-box" style="background-color: #f7f7f7">
+            <span class="content-placeholder">
+              <img src="img/identidad.png" alt="Wallet de identidad soberana" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section-bg-flow" aria-label="Cómo funciona Truuser">
+      <div class="container">
+        <div class="max-w-6xl mx-auto" style="text-align: center;">
+          <h2
+            class="text-3xl font-display font-bold text-gray-900 mb-8 text-center"
+            style="text-align: center;"
+            data-es="Cómo funciona Truuser"
+            data-en="How Truuser works"
+          >
+            Cómo funciona Truuser
+          </h2>
+          <p
+            class="sub-hero mb-16"
+            data-es="Truuser simplifica la forma en que las personas y organizaciones verifican y utilizan identidades digitales, en tres pasos claros:"
+            data-en="Truuser simplifies how people and organizations verify and use digital identities, in three clear steps:"
+          >
+            Truuser simplifica la forma en que las personas y organizaciones
+            verifican y utilizan identidades digitales, en tres pasos claros:
+          </p>
+
+          <div class="content-box" style="height: 500px; margin-top: 32px; margin-bottom: 48px">
+            <span class="content-placeholder">
+              <img src="img/cycle.jpg" alt="Flujo circular Verifica → Controla → Comparte" style="object-fit: contain;" />
+            </span>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/lift.png" alt="Verificación de identidad" />
+              </div>
+              <div class="card-step">①</div>
+              <h3 class="card-title" data-es="Verifica" data-en="Verify">
+                Verifica
+              </h3>
+              <p
+                data-es="El usuario autentica su identidad con fuentes confiables (gobiernos, empresas, instituciones educativas)."
+                data-en="The user authenticates their identity with trusted sources (governments, companies, educational institutions)."
+              >
+                El usuario autentica su identidad con fuentes confiables
+                (gobiernos, empresas, instituciones educativas).
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/cinema.png" alt="Control de credenciales" />
+              </div>
+              <div class="card-step">②</div>
+              <h3 class="card-title" data-es="Controla" data-en="Control">
+                Controla
+              </h3>
+              <p
+                data-es="Las credenciales se guardan en la wallet Truuser, cifradas y bajo el control del usuario."
+                data-en="Credentials are stored encrypted in the Truuser wallet, under the user’s control."
+              >
+                Las credenciales se guardan en la wallet Truuser, cifradas y
+                bajo el control del usuario.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-image-wrap">
+                  <img src="img/houses.png" alt="Compartir información" />
+              </div>
+              <div class="card-step">③</div>
+              <h3 class="card-title" data-es="Comparte" data-en="Share">
+                Comparte
+              </h3>
+              <p
+                data-es="El usuario decide qué información compartir y con quién. Privacidad selectiva, confianza total."
+                data-en="The user decides what information to share and with whom. Selective privacy, total trust."
+              >
+                El usuario decide qué información compartir y con quién.
+                Privacidad selectiva, confianza total.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section-bg-alt" aria-label="Lo que hace único a Truuser">
+      <div class="container">
+        <div class="max-w-6xl mx-auto" style="text-align: center;">
+          <h2
+            class="text-3xl font-display font-bold text-gray-900 mb-8"
+            style="text-align: center;"
+            data-es="Lo que hace único a Truuser"
+            data-en="What makes Truuser unique"
+          >
+            Lo que hace único a Truuser
+          </h2>
+          <p
+            class="sub-hero mb-14"
+            data-es="No es solo tecnología: es una nueva forma de entender la identidad digital. Construida sobre principios de soberanía, confianza y usabilidad."
+            data-en="It's not just technology: it's a new way of understanding digital identity. Built on principles of sovereignty, trust, and usability."
+          >
+            No es solo tecnología: es una nueva forma de entender la identidad digital.
+            Construida sobre principios de soberanía, confianza y usabilidad.
+          </p>
+
+          <div class="grid-2">
+            <div class="feature-card">
+              <h3
+                data-es="Identidad soberana"
+                data-en="Self-sovereign identity"
+              >
+                Identidad soberana
+              </h3>
+              <p
+                data-es="Tus datos son tuyos. Truuser te permite gestionar y revocar accesos sin depender de terceros."
+                data-en="Your data is yours. Truuser allows you to manage and revoke access without depending on third parties."
+              >
+                Tus datos son tuyos. Truuser te permite gestionar y revocar accesos sin
+                depender de terceros.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3
+                data-es="Verificación descentralizada"
+                data-en="Decentralized verification"
+              >
+                Verificación descentralizada
+              </h3>
+              <p
+                data-es="Credenciales verificadas por una red de confianza. Sin duplicaciones ni procesos redundantes."
+                data-en="Credentials verified by a trust network. No duplications or redundant processes."
+              >
+                Credenciales verificadas por una red de confianza. Sin duplicaciones ni
+                procesos redundantes.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3
+                data-es="Privacidad por diseño"
+                data-en="Privacy by design"
+              >
+                Privacidad por diseño
+              </h3>
+              <p
+                data-es="Comparte lo justo. Truuser aplica principios de privacidad selectiva y cifrado extremo a extremo."
+                data-en="Share only what's necessary. Truuser applies principles of selective privacy and end-to-end encryption."
+              >
+                Comparte lo justo. Truuser aplica principios de privacidad selectiva y
+                cifrado extremo a extremo.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3
+                data-es="Interoperabilidad global"
+                data-en="Global interoperability"
+              >
+                Interoperabilidad global
+              </h3>
+              <p
+                data-es="Cumple con los principales estándares (DID, Verifiable Credentials, eIDAS). Preparada para integrarse en cualquier ecosistema."
+                data-en="Complies with major standards (DID, Verifiable Credentials, eIDAS). Ready to integrate into any ecosystem."
+              >
+                Cumple con los principales estándares (DID, Verifiable Credentials,
+                eIDAS). Preparada para integrarse en cualquier ecosistema.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="usecases" class="section-bg-flow" aria-label="Casos de uso de Truuser">
+      <div class="container">
+        <div class="max-w-6xl mx-auto" style="text-align: center;">
+          <h2
+            class="text-3xl font-display font-bold text-gray-900 mb-10"
+            style="text-align: center;"
+            data-es="Casos de uso"
+            data-en="Use cases"
+          >
+            Casos de uso
+          </h2>
+          <p
+            class="sub-hero mb-12"
+            data-es="Desde fintech hasta instituciones públicas, Truuser impulsa una nueva forma de confianza digital."
+            data-en="From fintech to public institutions, Truuser drives a new form of digital trust."
+          >
+            Desde fintech hasta instituciones públicas, Truuser impulsa una nueva forma
+            de confianza digital.
+          </p>
+
+          <div class="grid-4">
+            <div class="usecase-card">
+              <div class="usecase-icon">💳</div>
+              <h3 data-es="Fintech" data-en="Fintech">Fintech</h3>
+              <p
+                data-es="Onboarding seguro y sin fricciones."
+                data-en="Secure and frictionless onboarding."
+              >
+                Onboarding seguro y sin fricciones.
+              </p>
+            </div>
+
+            <div class="usecase-card">
+              <div class="usecase-icon">🎓</div>
+              <h3 data-es="Educación" data-en="Education">Educación</h3>
+              <p
+                data-es="Certificados académicos verificables."
+                data-en="Verifiable academic certificates."
+              >
+                Certificados académicos verificables.
+              </p>
+            </div>
+
+            <div class="usecase-card">
+              <div class="usecase-icon">🏛️</div>
+              <h3 data-es="Gobierno" data-en="Government">Gobierno</h3>
+              <p
+                data-es="Identidad ciudadana digital, segura y privada."
+                data-en="Digital citizen identity, secure and private."
+              >
+                Identidad ciudadana digital, segura y privada.
+              </p>
+            </div>
+
+            <div class="usecase-card">
+              <div class="usecase-icon">🏢</div>
+              <h3 data-es="Empresas" data-en="Business">Empresas</h3>
+              <p
+                data-es="Confianza instantánea entre empleados y partners."
+                data-en="Instant trust between employees and partners."
+              >
+                Confianza instantánea entre empleados y partners.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta-section" aria-label="Contacto">
+      <div class="container">
+        <h2
+          class="font-display"
+          data-es="El futuro de la identidad digital empieza contigo"
+          data-en="The future of digital identity starts with you"
+        >
+          El futuro de la identidad digital empieza contigo
+        </h2>
+        <p
+          data-es="Únete a la nueva generación de confianza digital."
+          data-en="Join the new generation of digital trust."
+        >
+          Únete a la nueva generación de confianza digital.
+        </p>
+        <a
+          href="#"
+          class="btn cta-btn"
+          id="contactEmail"
+          data-es="Hablar con el equipo"
+          data-en="Talk to the team"
+        >
+          Hablar con el equipo
+        </a>
+      </div>
+    </section>
+    </main>
+
+    <footer>
+      <div
+        data-es="© 2025 Truuser. Todos los derechos reservados."
+        data-en="© 2025 Truuser. All rights reserved."
+      >
+        © 2025 Truuser. Todos los derechos reservados.
+      </div>
+    </footer>
+
+    <script>
+      const langToggle = document.getElementById("langToggle");
+      let currentLang = "es";
+
+      langToggle.addEventListener("click", () => {
+        currentLang = currentLang === "es" ? "en" : "es";
+        document.documentElement.lang = currentLang;
+        langToggle.textContent = currentLang === "es" ? "EN" : "ES";
+
+        document.querySelectorAll("[data-es]").forEach((el) => {
+          // Excluir el badge para que no se traduzca (texto fijo)
+          if (!el.classList.contains('badge') && el.getAttribute(`data-${currentLang}`)) {
+             el.textContent = el.getAttribute(`data-${currentLang}`);
+          }
+        });
+      });
+
+      // Protección anti-spam para el email
+      const contactEmail = document.getElementById("contactEmail");
+      if (contactEmail) {
+        contactEmail.addEventListener("click", function(e) {
+          e.preventDefault();
+          const user = "info";
+          const domain = "truuser.com";
+          const email = user + "@" + domain;
+          window.location.href = "mailto:" + email;
+        });
+      }
+    </script>
+  </body>
 </html>
